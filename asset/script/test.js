@@ -9,7 +9,6 @@ const recapBox = document.getElementById("recap");
 const choicesContainer = document.querySelector(".choices");
 const menuScreen = document.getElementById("menuScreen");
 const gameScreen = document.getElementById("gameScreen");
-const ambient = document.getElementById("ambientSound");
 const clickSound = document.getElementById("clickSound");
 const sceneImage = document.getElementById("sceneImage");
 
@@ -34,7 +33,7 @@ const sceneImages = {
     13: "asset/imgs/scene6.png", // couloir lueur
     14: "asset/imgs/scene14.png", // village
     15: "asset/imgs/scene29.png", // dragon approche
-    16: "asset/imgs/scene16.png", // combat dragon
+    16: "asset/imgs/scene30.png", // combat dragon
     17: "asset/imgs/scene5.png", // montagne + trésor
     18: "asset/imgs/scene18.png", // dragon attaque (chemin)
     19: "asset/imgs/scene19.png", // chute dans salle trésor
@@ -57,13 +56,6 @@ const sceneImages = {
     36: "asset/imgs/scene36.png", // mort blessures
     37: "asset/imgs/scene22.png", // perdu / renvoyé bateau
 };
-
-// --- Utilitaires
-function playClick() {
-    if (!clickSound) return;
-    try { clickSound.currentTime = 0; clickSound.play(); } catch { }
-}
-
 function updateSceneImage(i) {
     const src = sceneImages[i] || sceneImages[1];
     sceneImage.classList.remove("visible");
@@ -109,7 +101,6 @@ function render(text, options = []) {
         btn.className = "choice";
         btn.textContent = opt.label;
         btn.onclick = () => {
-            playClick();
             if (opt.recap) {
                 recap += opt.recap;
                 recapBox.textContent = recap;
