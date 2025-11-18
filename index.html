@@ -1,65 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ISLAND CHOICE — Aventure Textuelle</title>
   <link rel="stylesheet" href="/asset/css/style.css" />
 </head>
+
 <body>
-  <!-- MENU PRINCIPAL -->
-  <div id="menuScreen" class="menu-screen">
-    <div class="menu-content">
-      <h1 class="title">🏝 ISLAND CHOICE</h1>
-      <p class="subtitle">Chaque choix détermine ton destin...</p>
-      <div class="menu-buttons">
-        <button class="choice" onclick="startGame()">▶️ Jouer</button>
-        <button class="choice ghost" onclick="showRules()">📜 Règles</button>
-        <button class="choice ghost" onclick="showCredits()">💡 Crédits</button>
-      </div>
+  <header id="header">
+    <h1>ISLAND CHOICE</h1>
+    <p class="subtitle">Aventure textuelle interactive</p>
+    <button class="backMenu">🏠 Menu</button>
+  </header>
+  <main>
+    <!-- MENU PRINCIPAL -->
+    <div id="menuScreen" class="menu-screen">
+      <div class="menu-content">
+        <h1 class="title">🏝 ISLAND CHOICE</h1>
+        <p class="subtitle">Chaque choix détermine ton destin...</p>
+        <div class="menu-buttons">
+          <button class="start" >▶️ Jouer</button>
+          <button class="rules" >📜 Règles</button>
+        </div>
 
-      <div id="rules" class="info-panel hidden">
-        <h2>📜 Règles</h2>
-        <p>Lis le texte et choisis une action. Chaque décision change ton aventure !</p>
-        <p>Tu peux mourir, triompher ou découvrir la fin secrète 😏</p>
-        <button class="choice ghost" onclick="hidePanels()">⬅️ Retour</button>
-      </div>
-
-      <div id="credits" class="info-panel hidden">
-        <h2>💡 Crédits</h2>
-        <p>Créé par <b>Toi, l’aventurier du code</b><br>
-        Interface & design par <b>ChatGPT</b><br>
-        Sons : <a href="https://pixabay.com/sound-effects/" target="_blank">Pixabay</a></p>
-        <button class="choice ghost" onclick="hidePanels()">⬅️ Retour</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ÉCRAN DU JEU -->
-  <div id="gameScreen" class="container hidden">
-    <header>
-      <h1>ISLAND CHOICE</h1>
-      <p class="subtitle">Aventure textuelle interactive</p>
-    </header>
-
-    <div class="panel game">
-      <div class="story">
-        <img id="sceneImage" class="scene-image" src="" alt="Illustration de la scène" />
-        <p id="sceneText" class="scene-text">Chargement de l’aventure...</p>
-        <div class="choices"></div>
-        <div class="actions">
-          <button class="choice ghost" onclick="backToMenu()">🏠 Menu</button>
+        <div id="rules" class="info-panel hidden">
+          <h2>📜 Règles</h2>
+          <p>Lis le texte et choisis une action. Chaque décision change ton aventure !</p>
+          <p>Tu peux mourir, triompher ou découvrir la fin secrète 😏</p>
+          <button class="return">⬅️ Retour</button>
         </div>
       </div>
-
-      <aside class="sidebar">
-        <div class="card">
-          <h3>Récapitulatif</h3>
-          <p id="recap" class="recap">Aucune action pour le moment...</p>
-        </div>
-      </aside>
     </div>
-  </div>
+
+    <!-- ÉCRAN DU JEU -->
+    <div id="gameScreen" class="container hidden">
+      <div class="panel game">
+        <div class="story">
+          <img id="sceneImage" class="scene-image" src="" alt="Illustration de la scène" />
+          <p id="sceneText" class="scene-text">Chargement de l’aventure...</p>
+          <div class="choices"></div>
+        </div>
+
+        <aside class="sidebar">
+          <div class="card">
+            <h3>Récapitulatif</h3>
+            <p id="recap" class="recap">Aucune action pour le moment...</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
   <script src="/asset/script/test.js" defer></script>
 </body>
+
 </html>

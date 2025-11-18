@@ -8,9 +8,14 @@ const sceneText = document.getElementById("sceneText");
 const recapBox = document.getElementById("recap");
 const choicesContainer = document.querySelector(".choices");
 const menuScreen = document.getElementById("menuScreen");
+const header=document.getElementById("header")
 const gameScreen = document.getElementById("gameScreen");
 const clickSound = document.getElementById("clickSound");
 const sceneImage = document.getElementById("sceneImage");
+const buttonStart = document.querySelector(".start")
+const buttonRules=document.querySelector(".rules")
+const buttonBackMenu=document.querySelector(".backMenu")
+const buttonReturn=document.querySelector(".return")
 
 // --- État du jeu
 let index = 1;
@@ -66,7 +71,9 @@ function updateSceneImage(i) {
 }
 
 // --- Menu
+buttonStart.addEventListener("click",startGame)
 function startGame() {
+    header.style.display="block"
     menuScreen.classList.add("hidden");
     gameScreen.classList.remove("hidden");
     try { ambient.volume = 0.4; ambient.play(); } catch { }
@@ -74,19 +81,21 @@ function startGame() {
     recapBox.textContent = recap;
     showScene(1);
 }
+
+buttonBackMenu.addEventListener("click",backToMenu)
 function backToMenu() {
     gameScreen.classList.add("hidden");
     menuScreen.classList.remove("hidden");
     try { ambient.pause(); ambient.currentTime = 0; } catch { }
 }
+
+buttonRules.addEventListener("click",showRules)
 function showRules() {
     document.getElementById("rules").classList.remove("hidden");
     document.getElementById("credits").classList.add("hidden");
 }
-function showCredits() {
-    document.getElementById("credits").classList.remove("hidden");
-    document.getElementById("rules").classList.add("hidden");
-}
+
+buttonReturn.addEventListener("click",hidePanels)
 function hidePanels() {
     document.getElementById("rules").classList.add("hidden");
     document.getElementById("credits").classList.add("hidden");
@@ -297,16 +306,6 @@ function showScene(i) {
             );
             break;
 
-        case 19:
-            render(
-                "En continuant ton exploration du château, tu tombes dans un trou et atterris dans une salle remplie de trésors. Au bout, une autre porte. Explorer ou prendre le trésor ?",
-                [
-                    { label: "Explorer 🚪", next: 6, recap: "- Continuer l’exploration\n" },
-                    { label: "Prendre le trésor 💰", next: 20, recap: "- Prendre le trésor\n" },
-                ]
-            );
-            break;
-
         case 20:
             render(
                 "Tu commences à t’en mettre plein les poches quand un bruit sourd retentit ! La salle est en train de s’effondrer. Tu n’as plus d’issue : tu meurs écrasé... Il ne fallait pas être si cupide !",
@@ -489,13 +488,3 @@ function showScene(i) {
             ]);
     }
 }
-
-// --- Rendre les fonctions accessibles aux boutons HTML
-window.startGame = startGame;
-window.backToMenu = backToMenu;
-window.showRules = showRules;
-window.showCredits = showCredits;
-window.hidePanels = hidePanels;
-
-// (Optionnel) Démarrage auto du menu si besoin
-// showScene(1);
