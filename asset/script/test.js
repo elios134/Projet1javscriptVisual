@@ -1,6 +1,5 @@
 // ===============================
-//   ISLAND CHOICE — Version Web
-//   Fidèle à 100% (1 → 37)
+//   ISLAND CHOICE
 // ===============================
 
 // --- Éléments du DOM
